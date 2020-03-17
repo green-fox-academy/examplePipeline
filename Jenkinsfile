@@ -20,12 +20,12 @@ pipeline {
         docker.build("examplepipeline")
         }
         sh 'docker.withRegistry(dockerhubrepo, dockeruser)'
-        sh 'docker.push()'
+        sh 'docker.push'
       }
     }
     stage('Deploy to ElasticBeanstalk') {
       steps {
-        withAWS(credentials:'exampleid', region:'eu-west-3') {
+        withAWS(credentials:"exampleid", region:"eu-west-3") {
           sh 'aws s3 cp ./dockerrun.aws.json s3://bucketname/dockerrun.aws.json'
           sh 'aws elasticbeanstalk create-application \
           --application-name "${appname}" \
