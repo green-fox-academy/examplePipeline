@@ -17,7 +17,9 @@ pipeline {
     }
     stage('Deploy to dockerHub') {
       steps {
+        script{
         docker.build("examplePipeline")
+        }
         sh 'docker.withRegistry(dockerhubrepo, dockeruser)'
         sh 'docker.push()'
       }
