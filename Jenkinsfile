@@ -17,7 +17,7 @@ pipeline {
     }
     stage('Deploy to dockerHub') {
       steps {
-        def customImage = docker.build("examplePipeline")
+        docker.build("examplePipeline")
         sh 'docker.withRegistry(dockerhubrepo, dockeruser)'
         sh 'docker.push()'
       }
