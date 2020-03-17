@@ -21,7 +21,7 @@ pipeline {
         }
         script{
           docker.withRegistry('', "dockeruser"){
-          docker.push
+          docker.push()
           }
         }
       }
