@@ -26,7 +26,7 @@ pipeline {
         }
       }
 
-    }}
+    }
     stage('Deploy to ElasticBeanstalk') {
       steps {
         withAWS(credentials:"exampleid", region:"eu-west-3") {
