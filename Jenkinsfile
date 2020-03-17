@@ -3,7 +3,6 @@ pipeline {
   environment {
     dockerhubrepo = "rdg5/examplepipeline"
     dockeruser = "dockeruser"
-
     appname = "examplePipeline"
     envname = "Examplepipeline-dev"
     bucketname = "elasticbeanstalk-eu-west-3-124429370407"
@@ -18,7 +17,7 @@ pipeline {
     stage('Deploy to dockerHub') {
       steps {
         script{
-        docker.build("examplePipeline")
+        docker.build("examplepipeline")
         }
         sh 'docker.withRegistry(dockerhubrepo, dockeruser)'
         sh 'docker.push()'
