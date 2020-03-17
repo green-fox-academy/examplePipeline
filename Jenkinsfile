@@ -18,11 +18,12 @@ pipeline {
       steps {
         script{
         docker.build("examplepipeline")
-        }
-        sh 'docker.withRegistry("rdg/examplepipeline", "dockeruser")'
-        sh 'docker.push'
+        docker.withRegistry("rdg5/examplepipeline", "dockeruser")
+        docker.push
+
       }
-    }
+
+    }}
     stage('Deploy to ElasticBeanstalk') {
       steps {
         withAWS(credentials:"exampleid", region:"eu-west-3") {
