@@ -1,0 +1,11 @@
+{
+  "AWSEBDockerrunVersion": 2,
+   "Image": {
+    "Name": "rdg5/examplepipeline"
+  },
+  "Ports": [
+    {
+      "ContainerPort": "3000"
+    }
+  ]
+}
