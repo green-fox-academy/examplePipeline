@@ -33,7 +33,7 @@ pipeline {
         withAWS(credentials:"exampleid", region:"eu-west-3") {
           sh 'aws s3 cp ./dockerrun.aws.json s3://${bucketname}/$BUILD_ID/dockerrun.aws.json'
           sh 'aws elasticbeanstalk create-application-version \
-          --application-name "examplePipeline" --version-label "v1" \
+          --application-name "examplePipeline" --version-label "$BUILD_ID" \
           --source-bundle S3Bucket="${bucketname}",S3Key="$BUILD_ID/dockerrun.aws.json" \
           --auto-create-application'
           sh 'aws elasticbeanstalk update-environment --application-name "examplePipeline" \
