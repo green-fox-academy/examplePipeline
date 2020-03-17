@@ -19,7 +19,7 @@ pipeline {
       steps {
         dockerImage = docker.build dockerhubrepo + "${BUILD_DATE_FORMATTED}:latest"
       }
-      script {
+      steps{
         docker.withRegistry(dockerhubrepo, dockeruser) {
         docker.push()
         }
