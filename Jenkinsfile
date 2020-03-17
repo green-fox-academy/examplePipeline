@@ -18,9 +18,12 @@ pipeline {
       steps {
         script{
         docker.build("examplepipeline")
-        docker.withRegistry("rdg5/examplepipeline", "dockeruser")
-        docker.push
-
+        }
+        script{
+          docker.withRegistry("rdg5/examplepipeline", "dockeruser"){
+          docker.push
+          }
+        }
       }
 
     }}
