@@ -18,11 +18,8 @@ pipeline {
     stage('Deploy to dockerHub') {
       steps {
         dockerImage = docker.build dockerhubrepo + "${BUILD_DATE_FORMATTED}:latest"
-      }
-      steps{
-        docker.withRegistry(dockerhubrepo, dockeruser) {
-        docker.push()
-        }
+        sh 'docker.withRegistry(dockerhubrepo, dockeruser)'
+        sh 'docker.push()'
       }
     }
     stage('Deploy to ElasticBeanstalk') {
