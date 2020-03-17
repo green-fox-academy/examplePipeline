@@ -3,6 +3,7 @@ pipeline {
   environment {
     dockerhubrepo = "rdg5/examplepipeline"
     dockeruser = "dockeruser"
+    image = ""
     appname = "examplePipeline"
     envname = "Examplepipeline-dev"
     bucketname = "elasticbeanstalk-eu-west-3-124429370407"
@@ -17,7 +18,7 @@ pipeline {
     stage('Deploy to dockerHub') {
       steps {
         script{
-        def image = docker.build("rdg5/examplepipeline")
+        image = docker.build("rdg5/examplepipeline")
         }
         script{
           docker.withRegistry('', "dockeruser"){
