@@ -19,7 +19,7 @@ pipeline {
         script{
         docker.build("examplepipeline")
         }
-        sh 'docker.withRegistry(dockerhubrepo, dockeruser)'
+        sh 'docker.withRegistry("rdg/examplepipeline", "dockeruser")'
         sh 'docker.push'
       }
     }
