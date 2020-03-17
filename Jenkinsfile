@@ -17,10 +17,10 @@ pipeline {
     stage('Deploy to dockerHub') {
       steps {
         script{
-        docker.build("examplepipeline")
+        docker.build("rdg5/examplepipeline")
         }
         script{
-          docker.withRegistry("rdg5/examplepipeline", "dockeruser"){
+          docker.withRegistry('', "dockeruser"){
           docker.push
           }
         }
